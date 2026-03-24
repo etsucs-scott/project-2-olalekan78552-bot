@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CardWar.Console/CardWar.Console.csproj" />
+    <Project Path="src/CardWar.Core/CardWar.Core.csproj" />
+  </Folder>
+</Solution>
