@@ -1,0 +1,12 @@
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\bin\Debug\net10.0\CardWar.Core.deps.json
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\bin\Debug\net10.0\CardWar.Core.dll
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\bin\Debug\net10.0\CardWar.Core.pdb
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\CardWar.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\CardWar.Core.AssemblyInfoInputs.cache
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\CardWar.Core.AssemblyInfo.cs
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\CardWar.Core.csproj.CoreCompileInputs.cache
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\CardWar.Core.sourcelink.json
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\CardWar.Core.dll
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\refint\CardWar.Core.dll
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\CardWar.Core.pdb
+C:\Users\olale\source\repos\project-1-olalekan78552-bot\CardWar\src\CardWar.Core\obj\Debug\net10.0\ref\CardWar.Core.dll
