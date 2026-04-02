@@ -6,32 +6,35 @@ namespace CardWar.Core
 {
     public class Player
     {
+        // declare a name object for the player and players hand
         public string Name { get; set; }
-        private Hand hand;
+        public Hand Hand { get; set; }
 
+
+        // initialize a player and a hand object
         public Player(string name)
         {
             Name = name;
-            hand = new Hand();
+            Hand = new Hand();
+            
         }
 
-        // pick a card using the hand and add it to the players' queue
-        public void PickCard(Card card)
+        // Add a card to the player's hand
+        public void AddCard(Card card)
         {
-            hand.DrawCard(card);
+            Hand.AddCard(card);
         }
 
-        // play a card from the top card in the player's queue
+        // play a card from the players hand
         public Card PlayCard()
         {
-            return hand.PlayCard();
+            return Hand.RemoveCard();
         }
 
-        // keep players card count by invoking the queue's card count
+        // keep players card count
         public int CardCount()
         {
-            return hand.Count;
+            return Hand.Count();
         }
-
     }
 }

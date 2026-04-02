@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CardWar.Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e76f2d1856e699bf814e3301f15129a4908fee41")]
 [assembly: System.Reflection.AssemblyProductAttribute("CardWar.Console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CardWar.Console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

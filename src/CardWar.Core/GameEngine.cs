@@ -1,260 +1,166 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace CardWar.Core
 {
     public class GameEngine
     {
-        private List<Player> players = new List<Player>();
+        private Deck deck;
+        private List<Player> players;
+        private PlayerHands playerHand;
+        private PlayedCard playedCard;
+        private const int ROUNDMAX = 10000;
+
+        // Validate that user input to ensure only expected number of players participate
+        private int userInput;
+        public int UserInput
+        {
+            get { return userInput; }
+            set { 
+                    if (value < 2 || value > 4)
+                    {
+                        throw new Exception();   
+                    }
+                    userInput = value;
+            }
+        }
         
-        public Deck deck;
-        private int numberOfPlayers;
-        public GameEngine(Deck deck)
+        // initiallize a game engine with a deck, a list of players, 
+        public GameEngine(Deck deck, List<Player> players)
         {
             this.deck = deck;
+            this.players = players;
+            this.playerHand = new PlayerHands();
+            this.playedCard = new PlayedCard();
         }
 
-        // get the number of players from the user and add
-        // players to player list
-        public void AddPlayers()
-        {   
-            Console.Write("Enter the number of players: ");
-            while (!int.TryParse(Console.ReadLine(), out numberOfPlayers) || numberOfPlayers > 4 || numberOfPlayers < 2)
+        // Create a player objecta for the game
+        public void CreatePlayers()
+        {
+            for (int i = 0; i < userInput; i++)
             {
-                Console.Write("Enter a number between 2 and 4: ");
-            }
+                players.Add(new Player($"Player {i + 1}"));
 
-            for (int i = 1; i <= numberOfPlayers; i++)
+            }
+            foreach (Player player in players)
             {
-                players.Add(new Player("Player " + i));
+                playerHand.AddHand(player.Name, new Hand());
             }
         }
 
-        // Distribute card among players using the robin hood method
+        // distribute card to each player in robin-hood style. 
         public void DealCard()
         {
-            int index = 0;
             while (deck.Count > 0)
             {
-                Card card = deck.DrawCard();
-                players[index].PickCard(card);
+                foreach (Player player in players)
+                {       
+                    if (deck.Count == 0)
+                    {
+                        break;
+                    }
 
-                index = (index + 1) % numberOfPlayers;
+                    Card card = deck.PopCard();
+                    playerHand.GetHand(player.Name).AddCard(card);
+                }
+                 
             }
         }
 
+        // keep player card count in game engine to enable use in the game
+        public int CardCount(string name)
+        {
+            return playerHand.Count(name);
+        }
+
+        // stimulate game round. Player with the highest card rank gets the pot. if there is a tie, stimulate tie and determine winner. elimate player without any card left to play 
+        public void PlayRound()  
+        {
+            
+            foreach (Player player in players)
+            {
+                if (playerHand.Count(player.Name) > 0)
+                {
+                    Card card = playerHand.GetHand(player.Name).RemoveCard();
+                    playedCard.AddCard(player.Name, card);
+                    Console.WriteLine($"{player.Name} : {card}");    
+                }                
+            }
+            Player winner = playedCard.Winner(players, playerHand);
+            if (winner != null)
+            {
+                Console.Write($"Round Winner {winner.Name} (Cards: ");
+                Console.Write($"{players[0].Name} = {playerHand.Count(players[0].Name)}");
+
+                for (int i = 1; i < players.Count; i++)
+                {
+                    Console.Write(", ");
+                    Console.Write($"{players[i].Name} = {playerHand.Count(players[i].Name)}");
+                }                
+                Console.Write(")");
+                Console.WriteLine();
+            }
+
+            else
+            {
+                Console.Write($"Game is a tie between {players[0].Name}");
+                foreach (Player player in players)
+                {
+                    Console.Write(" and ");
+                    Console.Write($"{player.Name}");
+                }
+            }
+        }
+
+        // remove a player with no card left
         public void RemovePlayer()
         {
-            int playerCount = players.Count - 1;
-            for (int i = playerCount; i >=0; i--)
+            for (int i = players.Count - 1; i >= 0; i--)
             {
-                if (players[i].CardCount() == 0)
+                if (playerHand.Count(players[i].Name) == 0)
                 {
-                    Console.WriteLine($"{players[i].Name} is Eliminated");
+                    string name = players[i].Name;
+                    playerHand.RemoveHand(players[i].Name);
                     players.RemoveAt(i);
+                    Console.WriteLine($"{name} has 0 cards and has been Eliminated");
                 }
+
             }
         }
 
-        // Remove any tie players that do not have any card left from the game
-        public List<Player> RemoveTiePlayers(List<Player> tiePlayer)
+        // determine overall winner when game ends
+        public string OverallWinner()
         {
-            List<Player> playersLeft = new List<Player>();
-            foreach (Player player in tiePlayer)
+            string winner = players[0].Name;
+            int highest = -1;
+
+            foreach (Player player in players)
             {
-                if (player.CardCount() > 0)          
+                if (playerHand.Count(player.Name) > highest)
                 {
-                    playersLeft.Add(player);
-                }
-                else
-                {
-                    Console.WriteLine($"{player.Name} has no card left and is Eliminated!");
-                }
-            }
-
-
-            return playersLeft;
-        }
-
-        // Stimulate game rounds and determine if there was a tie
-        // Give card in the pot to the winner of the each rounds and keep card count. Eliminate players without any card left untill a winner is determine
-        public Player PlayRound(List<Player> players, List<Card> pot)
-        {
-            RemovePlayer();
-
-            List<Player> tiePlayers = new List<Player>();
-            Player winner = players[0];
-            Card highestCard = players[0].PlayCard();
-            Console.WriteLine("Playing Card.......\n");
-            Console.WriteLine($"{players[0].Name}: {highestCard}");
-            pot.Add(highestCard);
-            int playersCount = players.Count;
-
-            tiePlayers.Add(players[0]);
-            for (int i = 1; i < playersCount; i++)
-            {
-                Card cardPlayed = players[i].PlayCard();
-                Console.WriteLine($"{players[i].Name}: {cardPlayed}");
-                pot.Add(cardPlayed);
-                if (cardPlayed.Rank > highestCard.Rank)
-                {
-                    highestCard = cardPlayed;
-                    winner = players[i];
-
-                    tiePlayers.Clear();
-                    tiePlayers.Add(players[i]);
-                }
-
-                else if (highestCard.Rank == cardPlayed.Rank)
-                {
-                    tiePlayers.Add(players[i]);
+                    highest = playerHand.Count(player.Name);
+                    winner = player.Name;
+                        
                 }
             }
 
-            if (tiePlayers.Count > 1)
-            {
-                Console.WriteLine($"\nTie between: {string.Join(" and ", tiePlayers.Select(p => p.Name))}!\n");
-
-                tiePlayers = RemoveTiePlayers(tiePlayers);
-                if (tiePlayers.Count == 1)
-                {
-                    winner = tiePlayers[0];
-                    foreach (Card card in pot)
-                    {
-                        winner.PickCard(card);
-                    }
-                    Console.WriteLine($"\nWinner {winner.Name}\n");
-                    
-                    foreach (Player player in players)
-                    {
-                        Console.WriteLine($"{player.Name}: {player.CardCount()} cards");
-                    }
-                    return winner;
-                }
-                Console.WriteLine($"Pot includes: {string.Join(", ", pot)}");
-                Console.WriteLine();
-                return PlayRound(tiePlayers, pot);
-            }
-
-            
-            foreach (Card card in pot)
-            {
-                winner.PickCard(card);
-            }
-            Console.WriteLine($"\nWinner {winner.Name}\n");
-            foreach(Player player in players)
-            {
-                Console.WriteLine($"{player.Name}: {player.CardCount()} cards");
-            }
-
-            return winner;    
-        }
-
-        // Determine overall winner by checking the number of cards left if no winner is game round
-        public Player OverallWinner()
-        {
-            Player currentWinner = null;
-            int winningCard = -1;
-            List<Player> tiePlayer = new List<Player>();
-            
-            for (int i = 0; i < players.Count; i++)
-            {
-                int cardCount = players[i].CardCount();
-                if (cardCount > winningCard)
-                {
-                    winningCard = players[i].CardCount();
-                    currentWinner = players[i];
-
-                    tiePlayer.Clear();
-                    tiePlayer.Add(players[i]);
-                }
-
-                else if (players[i].CardCount() == winningCard)
-                {
-                    tiePlayer.Add(players[i]);
-                }
-
-            }
-
-            if (tiePlayer.Count > 1)
-            {
-                Console.WriteLine($"Tie Game between {string.Join(" and ", tiePlayer.Select(p => p.Name))} with {winningCard} cards");
-                return null;
-            }
-
-            return currentWinner;
-        }
-
-        // Start the game function by combining component of the game engine
-        public void StartGame()
-        {
-            int rounds;
-
-            Console.Write("Enter the number of rounds: ");
-            while (!int.TryParse(Console.ReadLine(), out rounds))
-            {
-                Console.WriteLine("Enter a valid number");
-            }
-            int gameRound = 1;
-
-            while (gameRound <= rounds)
-            {
-                Console.WriteLine($"\n-----Round {gameRound} -----\n");
-                List<Card> pot = new List<Card>();
-
-                PlayRound(players, pot);
-                
-                if(GameOver(gameRound, rounds))
-                {
-                    Console.WriteLine("\nGame Over!");
-                    break;
-                }
-
-                Console.Write("\nPress Enter to play Next Rounds or Q to quit Game!: ");
-                string answer = Console.ReadLine();
-
-                if (answer == "Q" || answer == "q")
-                {
-                    Console.WriteLine("\nGame Over");
-                    break;
-                }
-
-                gameRound++;
-            }
-
-            if (gameRound == rounds)
-            {
-                Player finalWinner = OverallWinner();
-
-                if (finalWinner != null)
-                {
-                    Console.WriteLine($"The overall winner is {finalWinner.Name} with {finalWinner.CardCount()} cards");
-                }
-
-                return;
-            }
-
-            Player winner = OverallWinner();
-            Console.WriteLine($"The overall winner is {winner.Name} with {winner.CardCount()} cards");
-
+            return winner;
 
         }
 
-        // function to determine if end of game has been reached.
-        public bool GameOver(int gameRound, int rounds)
+        // check if a winner has been determine or max game round has been reached
+        public bool GameOver(int gameRound)
         {
-            int roundMax = 10000;
 
-            if (players.Count == 1 || gameRound >= roundMax || gameRound == rounds)
+            if (players.Count == 1 || gameRound >= ROUNDMAX)
             {
                 return true;
             }
-
             return false;
-
         }
-
-
+        
     }
+   
 }

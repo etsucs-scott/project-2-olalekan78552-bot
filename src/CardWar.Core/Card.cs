@@ -30,12 +30,13 @@ public enum Ranks
 
 namespace CardWar.Core
 {
+    // create a card object which comparises of rank and suits
+    // Override the card object to print the card name
     public class Card
     {
         public Suits Suit { get; set; }
         public Ranks Rank { get; set; }
 
-        // override tostring method to display card them
         public override string ToString()
         {
             return $"{Rank.ConvertRank()} {Suit}";

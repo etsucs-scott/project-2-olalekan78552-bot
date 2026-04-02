@@ -6,6 +6,7 @@ namespace CardWar.Core
 {
     public static class CardExtensions
     {
+        // Convert Ranks to abbreviation for game display purpose
         public static string ConvertRank(this Ranks rank)
         {
             return rank switch
@@ -14,25 +15,12 @@ namespace CardWar.Core
                 Ranks.King => "K",
                 Ranks.Queen => "Q",
                 Ranks.Jack => "J",
-                Ranks.Ten => "10",
                 _=> ((int)rank).ToString()
 
             };
         }
 
 
-        //public static string ConvertSuit(this Suits suit)
-        //{
-        //    return suit switch
-        //    {
-        //        Suits.Hearts => "♥",
-        //        Suits.Diamonds => "♦",
-        //        Suits.Spades => "♠",
-        //        Suits.Clubs => "♣",
-        //        _ => "?"
 
-        //    };
-
-        //}
     }
 }

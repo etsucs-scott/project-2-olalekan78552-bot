@@ -6,31 +6,27 @@ namespace CardWar.Core
 {
     public class Hand
     {
-        // create a queue to hold card in card in hand
-        public Queue<Card> Cards { get; set; }
+        public Queue<Card> cards = new Queue<Card>();
 
-        public Hand()
+        // keep the number of cards left in the queue
+        public int Count()
         {
-            Cards = new Queue<Card>();
+            return cards.Count;
         }
 
-        // Add a card to the end of the queue using the FIFO method
-        public void DrawCard(Card card)
+        // add a card to back of queue using the FIFO method
+        public void AddCard(Card card)
         {
-            Cards.Enqueue(card);
+            cards.Enqueue(card);
+            
         }
 
-        // Remove a card from the top of the queue using the FIFO method
-        public Card PlayCard()
+        // remove card from queue using the FIFO method 
+        public Card RemoveCard()
         {
-            return Cards.Dequeue();
+            return cards.Dequeue();
         }
 
 
-        // Return card left in the queue
-        public int Count
-        {
-            get { return Cards.Count; }
-        }
     }
 }
