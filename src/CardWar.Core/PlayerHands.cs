@@ -4,30 +4,48 @@ using System.Text;
 
 namespace CardWar.Core
 {
+    /// <summary>
+    /// Manages the collection of player hands, mapping player names
+    /// to their respective card hands.
+    /// </summary>
     public class PlayerHands
     {
-        // create a collection to hold player Name and player's Queue of card
         private Dictionary<string, Hand> playerHand = new Dictionary<string, Hand>();
 
-        // Add a player's name and their hand to the dictionary
+        /// <summary>
+        /// Add a player's name and their hand to the dictionary
+        /// </summary>
+        /// <param name="name">The name of the player</param>
+        /// <param name="hand">The hand assigned to the player</param>
         public void AddHand(string name, Hand hand)
         {
             playerHand[name] = hand;
         }
 
-        // return the hand that matches player's name
+        /// <summary>
+        /// return the hand that matches player's name
+        /// </summary>
+        /// <param name="name">Player's name</param>
+        /// <returns>The hand belonging to the player</returns>
         public Hand GetHand(string name)
         {
             return playerHand[name];
         }
 
-        // remove a player's hand from the dictionary  
+        /// <summary>
+        /// remove a player's hand from the dictionary 
+        /// </summary>
+        /// <param name="name">Player's name</param>        
         public void RemoveHand(string name)
         {
             playerHand.Remove(name);
         }
 
-        // keep record of the number of card player has left in the dictionary
+        /// <summary>
+        /// keep record of the number of card player has left in the player's hand
+        /// </summary>
+        /// <param name="name">The name of the player</param>
+        /// <returns>Number of card left</returns>
         public int Count(string name)
         {
             return GetHand(name).Count();

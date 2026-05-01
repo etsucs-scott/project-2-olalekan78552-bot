@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CardWar.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e76f2d1856e699bf814e3301f15129a4908fee41")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d58ed439f44406c15196df00e2f7ad50c493b42")]
 [assembly: System.Reflection.AssemblyProductAttribute("CardWar.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CardWar.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

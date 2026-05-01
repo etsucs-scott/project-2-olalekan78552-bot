@@ -5,6 +5,10 @@ using System.Text;
 
 namespace CardWar.Core
 {
+    /// <summary>
+    /// Controls the overall flow of the Card War game, including player setup,
+    /// dealing cards, playing rounds, eliminating players, and determining the winner.
+    /// </summary>
     public class GameEngine
     {
         private Deck deck;
@@ -13,8 +17,15 @@ namespace CardWar.Core
         private PlayedCard playedCard;
         private const int ROUNDMAX = 10000;
 
-        // Validate that user input to ensure only expected number of players participate
         private int userInput;
+
+        /// <summary>
+        /// Gets or sets the number of players participating in the game.
+        /// Only values between 2 and 4 are allowed.
+        /// </summary>
+        /// <exception cref="Exception">
+        /// Thrown when the number of players is outside the valid range.
+        /// </exception>
         public int UserInput
         {
             get { return userInput; }
@@ -26,8 +37,12 @@ namespace CardWar.Core
                     userInput = value;
             }
         }
-        
-        // initiallize a game engine with a deck, a list of players, 
+
+        /// <summary>
+        /// Initialize game engine with a deck of card and a list of players
+        /// </summary>
+        /// <param name="deck">Cards used</param>
+        /// <param name="players">Participating players</param> 
         public GameEngine(Deck deck, List<Player> players)
         {
             this.deck = deck;
@@ -36,7 +51,9 @@ namespace CardWar.Core
             this.playedCard = new PlayedCard();
         }
 
-        // Create a player objecta for the game
+        /// <summary>
+        /// Create a player object for the game
+        /// </summary>
         public void CreatePlayers()
         {
             for (int i = 0; i < userInput; i++)
@@ -50,7 +67,9 @@ namespace CardWar.Core
             }
         }
 
-        // distribute card to each player in robin-hood style. 
+        /// <summary>
+        /// distribute card to each player in robin-hood style. 
+        /// </summary>
         public void DealCard()
         {
             while (deck.Count > 0)
@@ -69,13 +88,21 @@ namespace CardWar.Core
             }
         }
 
-        // keep player card count in game engine to enable use in the game
+        /// <summary>
+        /// keep player card count in game engine to enable use in the game
+        /// </summary>
+        /// <param name="name">The name of the player</param>
+        /// <returns></returns>
         public int CardCount(string name)
         {
             return playerHand.Count(name);
         }
 
-        // stimulate game round. Player with the highest card rank gets the pot. if there is a tie, stimulate tie and determine winner. elimate player without any card left to play 
+        /// <summary>
+        /// stimulate game round. Player with the highest card rank gets the pot. if 
+        /// there is a tie, stimulate tie and determine winner. elimate player without 
+        /// any card left to play
+        /// </summary>        
         public void PlayRound()  
         {
             
@@ -114,7 +141,9 @@ namespace CardWar.Core
             }
         }
 
-        // remove a player with no card left
+        /// <summary>
+        /// remove a player with no card left
+        /// </summary>
         public void RemovePlayer()
         {
             for (int i = players.Count - 1; i >= 0; i--)
@@ -130,7 +159,10 @@ namespace CardWar.Core
             }
         }
 
-        // determine overall winner when game ends
+        /// <summary>
+        /// determine overall winner when game ends
+        /// </summary>
+        /// <returns></returns>
         public string OverallWinner()
         {
             string winner = players[0].Name;
@@ -150,7 +182,11 @@ namespace CardWar.Core
 
         }
 
-        // check if a winner has been determine or max game round has been reached
+        /// <summary>
+        /// check if a winner has been determine or max game round has been reached
+        /// </summary>
+        /// <param name="gameRound"></param>
+        /// <returns>a value to indicate if game is over or not</returns>
         public bool GameOver(int gameRound)
         {
 

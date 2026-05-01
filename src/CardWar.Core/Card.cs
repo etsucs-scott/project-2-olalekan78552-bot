@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-// cards suit and ranks arranged in the order of lowest to highest for easy comparison in game engine
+/// <summary>
+/// cards suit and ranks arranged in the order of lowest to highest for easy comparison in game engine
+/// </summary>
 public enum Suits
 {
     Hearts,
@@ -30,13 +32,19 @@ public enum Ranks
 
 namespace CardWar.Core
 {
-    // create a card object which comparises of rank and suits
-    // Override the card object to print the card name
+    /// <summary>
+    /// create a card object which comparises of rank and suits
+    /// Override the card object to print the card name
+    /// </summary>
     public class Card
     {
         public Suits Suit { get; set; }
         public Ranks Rank { get; set; }
 
+        /// <summary>
+        /// Replace tostring method with an enum card representation
+        /// </summary>
+        /// <returns>Return rank and suit of card</returns>
         public override string ToString()
         {
             return $"{Rank.ConvertRank()} {Suit}";

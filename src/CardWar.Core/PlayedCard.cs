@@ -4,16 +4,22 @@ using System.Text;
 
 namespace CardWar.Core
 {
+    /// <summary>
+    /// Tracks the cards played during a round, stores the pot,
+    /// determines the round winner, and resolves ties.
+    /// </summary>
     public class PlayedCard
     {
-        // Dicitonary to hold player name and card played face up for easy comparison 
+         
         private Dictionary<string, Card> playedCards = new Dictionary<string, Card>();
-
-        // a list to hold already played card so winner can collect.
         private List<Card> pot = new List<Card>();
 
 
-        // Add a card to the dictionary and add card to pot for collection after win
+        /// <summary>
+        /// Add a card to the dictionary and add card to pot for collection after win
+        /// </summary>
+        /// <param name="name">The name of the player who played the card</param>
+        /// <param name="card">The card being played</param>
         public void AddCard(string name, Card card)
         {
             playedCards[name] = card;
@@ -21,7 +27,15 @@ namespace CardWar.Core
         }
 
 
-        // Determine the winner of the game by comparing cards and resolving ties if one exist
+        /// <summary>
+        /// Determines the winner of the current round by comparing played card ranks.
+        /// If multiple players tie, additional cards are played until a winner is found.
+        /// </summary>
+        /// <param name="players">The players currently participating in the round.</param>
+        /// <param name="playerHand">The collection of player hands used to draw and award cards.</param>
+        /// <returns>
+        /// The player who wins the round, or null if no winner can be determined.
+        /// </returns>
         public Player Winner(List<Player> players, PlayerHands playerHand)
         {
             if (playedCards.Count == 0)
