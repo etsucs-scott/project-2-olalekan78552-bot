@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{76EE2121-3128-4A78-AE36-518739912AA2}|src\\CardWar.Console\\CardWar.Console.csproj|c:\\users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\cardwar.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76EE2121-3128-4A78-AE36-518739912AA2}|src\\CardWar.Console\\CardWar.Console.csproj|solutionrelative:src\\cardwar.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{76655038-4B1B-DEE1-E826-53E6849290DA}|src\\CardWar.Core\\CardWar.Core.csproj|c:\\users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\cardwar.core\\playerhands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{76655038-4B1B-DEE1-E826-53E6849290DA}|src\\CardWar.Core\\CardWar.Core.csproj|solutionrelative:src\\cardwar.core\\playerhands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{76655038-4B1B-DEE1-E826-53E6849290DA}|src\\CardWar.Core\\CardWar.Core.csproj|c:\\users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\cardwar.core\\cardwar.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{76655038-4B1B-DEE1-E826-53E6849290DA}|src\\CardWar.Core\\CardWar.Core.csproj|solutionrelative:src\\cardwar.core\\cardwar.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76EE2121-3128-4A78-AE36-518739912AA2}|src\\CardWar.Console\\CardWar.Console.csproj|c:\\users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\cardwar.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76EE2121-3128-4A78-AE36-518739912AA2}|src\\CardWar.Console\\CardWar.Console.csproj|solutionrelative:src\\cardwar.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "PlayerHands.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\PlayerHands.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\PlayerHands.cs",
@@ -71,19 +71,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\Player.cs",
-              "RelativeDocumentMoniker": "src\\CardWar.Core\\Player.cs",
-              "ToolTip": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\Player.cs",
-              "RelativeToolTip": "src\\CardWar.Core\\Player.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAkwDYAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T19:13:32.801Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PlayedCard.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\PlayedCard.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\PlayedCard.cs",
@@ -95,7 +83,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Hand.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\Hand.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\Hand.cs",
@@ -107,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "GameEngine.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\GameEngine.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\GameEngine.cs",
@@ -119,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Deck.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\Deck.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\Deck.cs",
@@ -131,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "CardExtensions.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\CardExtensions.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\CardExtensions.cs",
@@ -143,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Card.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\Card.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\Card.cs",
@@ -155,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "CardWar.Core.csproj",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\CardWar.Core.csproj",
               "RelativeDocumentMoniker": "src\\CardWar.Core\\CardWar.Core.csproj",
@@ -167,15 +155,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Console\\Program.cs",
               "RelativeDocumentMoniker": "src\\CardWar.Console\\Program.cs",
               "ToolTip": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Console\\Program.cs",
               "RelativeToolTip": "src\\CardWar.Console\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAQwD0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T01:59:43.741Z"
+              "WhenOpened": "2026-04-02T01:59:43.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\Player.cs",
+              "RelativeDocumentMoniker": "src\\CardWar.Core\\Player.cs",
+              "ToolTip": "C:\\Users\\olale\\source\\repos\\project-2-olalekan78552-bot\\src\\CardWar.Core\\Player.cs",
+              "RelativeToolTip": "src\\CardWar.Core\\Player.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAkwDYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T19:13:32.801Z"
             }
           ]
         }

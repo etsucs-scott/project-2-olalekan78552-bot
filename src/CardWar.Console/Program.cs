@@ -3,17 +3,19 @@ using CardWar.Core;
 
 namespace CardWar
 {
-    internal class Program
+   internal class Program
     {
+        /// <summary>
+        /// Starts the Card War game, collects the number of players,
+        /// deals cards, runs each round, and displays the overall winner.
+        /// </summary>
+        /// <param name="args">Command-line arguments passed to the program.</param>
         static void Main(string[] args)
         {
-            // create a deck of cards, a list of players and a game object
             Deck deck = new Deck();
             List<Player> players = new List<Player>();
             GameEngine game = new GameEngine(deck, players);
-
-
-            // accepts a  number of players from the user and validate 
+ 
             while(true)
             {
                 int userInput;
@@ -35,8 +37,6 @@ namespace CardWar
                 }
             }
 
-            // start the game and print game messages according.
-            // End the game if a user has been determine or the game game count has been reached
             game.CreatePlayers();
             game.DealCard();
             Console.WriteLine($"\n----Dealing Cards-----\n");
